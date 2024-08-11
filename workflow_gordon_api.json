@@ -1,0 +1,198 @@
+{
+  "3": {
+    "inputs": {
+      "seed": 565266629794906,
+      "steps": 80,
+      "cfg": 12,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 0.8,
+      "model": [
+        "11",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "5": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": "Generate an ultra-realistic and highly detailed image of Gordon Ramsay using SDXL with the Gordon Ramsay LoRA. Capture Gordon Ramsay riding a camel in the desert, dressed in traditional Arabic attire. His expression should be calm and confident, showcasing a composed and authoritative demeanor. Ensure his face is clearly recognizable and maintains his distinct features with sharp, clear facial details.\n\nThe traditional Arabic attire should include a loose, flowing robe (thobe or dishdasha) with intricate patterns, a headscarf (keffiyeh or ghutra) secured with an agal, and sandals. The clothing should be made of cloth and appear appropriate for a desert environment. The camel should be realistically textured, including its fur and a traditional saddle. Ensure Gordon Ramsay is sitting naturally on the camel without any unnatural morphing.\n\nThe background should be reflective of the desert setting, featuring vast sand dunes, a clear blue sky, and the bright sun casting natural shadows and highlights. The lighting in the scene should be even and natural, emphasizing the textures and details of both Gordon Ramsay and the Arabic attire.\n\nEnsure the image quality is exceptionally high, with no visible artifacts or distortions. Focus on achieving hyperrealism, particularly in the textures of Gordon Ramsay's facial features, the camel, and the Arabic attire, ensuring they are sharp, clear, and true to life. Pay special attention to his eyes, mouth, and skin texture to capture the confidence and calmness in his expression. The image should convey a sense of adventure and authenticity while highlighting the detailed craftsmanship of the Arabic attire. (ultra-realistic, hyper-detailed:1.3) (calm, confident expression:1.5) (sharp, clear facial features of Gordon Ramsay:1.6) (properly seated on camel:1.3) (high-quality, detailed Arabic attire:1.5) (simple, desert-appropriate background:1.1) (intricate costume textures:1.4)",
+      "clip": [
+        "11",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "Avoid any cartoonish or exaggerated features that deviate from the realistic style. Ensure there are no distortions, blurriness, or unnatural colors. Do not include any other characters, cluttered environments, or distracting elements that would detract from the focus on Gordon Ramsay. Avoid low quality and low resolution. Ensure there is no facial distortion, random artifacts, or artifacts on hair or ears. Avoid random objects sticking out of the forehead. Ensure the entire body is free from distortion, including deformed limbs and fingers. Avoid any unnatural merging of Gordon Ramsay's body with the camel. Focus on maintaining the integrity and realism of Gordon Ramsay's facial features and the detailed Arabic attire. (cartoonish, exaggerated features:1.5) (unrealistic backgrounds, dramatic lighting effects:1.5) (distortions, blurriness:1.5) (unnatural colors:1.5) (cluttered environments:1.5) (distracting elements:1.5) (low quality:1.5) (low resolution:1.5) (facial distortion:1.6) (random artifacts:1.6) (body merging with the camel:1.6) (deformed limbs and fingers:1.6)",
+      "clip": [
+        "11",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "11": {
+    "inputs": {
+      "lora_name": "_gordonramsayv1.safetensors",
+      "strength_model": 0.85,
+      "strength_clip": 0.75,
+      "model": [
+        "4",
+        0
+      ],
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "12": {
+    "inputs": {
+      "images": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "17": {
+    "inputs": {
+      "upscale_by": 2,
+      "seed": 615825377260035,
+      "steps": 10,
+      "cfg": 8,
+      "sampler_name": "euler",
+      "scheduler": "karras",
+      "denoise": 0.5,
+      "mode_type": "Linear",
+      "tile_width": 1024,
+      "tile_height": 1024,
+      "mask_blur": 16,
+      "tile_padding": 32,
+      "seam_fix_mode": "Half Tile",
+      "seam_fix_denoise": 0.5,
+      "seam_fix_width": 64,
+      "seam_fix_mask_blur": 16,
+      "seam_fix_padding": 32,
+      "force_uniform_tiles": true,
+      "tiled_decode": false,
+      "image": [
+        "19",
+        0
+      ],
+      "model": [
+        "11",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ],
+      "upscale_model": [
+        "23",
+        0
+      ]
+    },
+    "class_type": "UltimateSDUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale"
+    }
+  },
+  "19": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "23": {
+    "inputs": {
+      "model_name": "4xFaceUpSharpDAT.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "25": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  }
+}
